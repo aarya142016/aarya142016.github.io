@@ -11,11 +11,5 @@ Run the server locally
 python3 -m http.server
 ```
 
-# Changes to game
-```python
-import asyncio
-import sys
-
-# inside the loop
-await asyncio.sleep(1 / 10) # 10  frame per second
-```
+# Snake game mechanics
+The snake game supports dynamic speed adjustment via an HTML input field (1-20 FPS).

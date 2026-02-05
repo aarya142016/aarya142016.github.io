@@ -34,7 +34,10 @@
 <body>
 
     <h1>Snake Game</h1>
-     <canvas id="canvas" style="image-rendering: pixelated"></canvas>
+    <div>
+        <label>Speed (FPS): <input type="number" id="speed-input" value="10" min="1" max="20"></label>
+    </div>
+     <canvas id="canvas" style="image-rendering: pixelated;"></canvas>
 
     <script type="py-game" src="/snake/snake.py"></script>
 
