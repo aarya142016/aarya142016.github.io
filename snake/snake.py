@@ -1,7 +1,7 @@
 import pygame
 import random
 import asyncio
-import sys
+from pyscript import document
 
 # Initialize pygame
 pygame.init()
@@ -101,8 +101,10 @@ while running:
         screen.blit(restart_text, (SCREEN_WIDTH // 2 - 130, SCREEN_HEIGHT // 2 + 30))
 
     pygame.display.flip()
-    await asyncio.sleep(1 / 10)
+    
+    # Get speed from input box
+    speed_input = document.getElementById("speed-input")
+    speed = int(speed_input.value) if speed_input and speed_input.value else 10
+    await asyncio.sleep(1 / speed)
     
 pygame.quit()
-
-    
