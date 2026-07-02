@@ -15,3 +15,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   }
 });
+
+// Content collections configuration
+// Add this to a separate astro.config.ts file or inline above
+// For now, collections will be auto-discovered in src/content/

@@ -1,28 +1,156 @@
 @import "tailwindcss";
 
-/* Custom theme colors matching the original site */
+/* Configure class-based dark mode for Tailwind v4 */
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* === DRACULA THEME - Popular Dark Theme === */
 @theme {
-  --color-slate-900: #0f172a;  /* Main dark background */
-  --color-slate-800: #1e293b;  /* Cards/headers */
-  --color-blue-400: #60a5fa;   /* Links */
-  --color-gray-400: #9ca3af;   /* Footer text */
+  /* Light mode - Clean, bright */
+  --color-bg: #ffffff;
+  --color-surface: #f1f5f9;
+  --color-card: #ffffff;
+  --color-text: #1e293b;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-accent: #6366f1;
+  --color-accent-hover: #4f46e5;
+
+  /* Dark mode - Dracula inspired (better contrast) */
+  --color-dark-bg: #282a36;
+  --color-dark-surface: #44475a;
+  --color-dark-card: #44475a;
+  --color-dark-text: #f8f8f2;
+  --color-dark-text-muted: #bfbfbf;
+  --color-dark-border: #6272a4;
 }
 
-/* Dark mode class support */
+/* Light mode defaults */
 html {
-  color-scheme: dark;
-}
-
-html.dark {
-  color-scheme: dark;
-}
-
-html.light {
   color-scheme: light;
 }
 
-/* Base styles */
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Body backgrounds */
 body {
-  @apply bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html[data-theme="dark"] body {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+/* Cards - HIGH CONTRAST */
+.bg-white {
+  background-color: var(--color-card) !important;
+}
+
+html[data-theme="dark"] .bg-white {
+  background-color: var(--color-dark-card) !important;
+  border: 1px solid var(--color-dark-border);
+}
+
+/* Secondary backgrounds */
+.bg-gray-100 {
+  background-color: var(--color-surface) !important;
+}
+
+html[data-theme="dark"] .bg-gray-100 {
+  background-color: var(--color-dark-surface) !important;
+}
+
+html[data-theme="dark"] .bg-slate-700 {
+  background-color: var(--color-dark-surface) !important;
+}
+
+html[data-theme="dark"] .bg-slate-800 {
+  background-color: var(--color-dark-card) !important;
+}
+
+/* Text colors */
+.text-gray-800 {
+  color: var(--color-text) !important;
+}
+
+.text-gray-700 {
+  color: var(--color-text-muted) !important;
+}
+
+.text-gray-600 {
+  color: var(--color-text-muted) !important;
+}
+
+html[data-theme="dark"] .text-gray-200 {
+  color: var(--color-dark-text) !important;
+}
+
+html[data-theme="dark"] .text-gray-300,
+html[data-theme="dark"] .text-gray-400 {
+  color: var(--color-dark-text-muted) !important;
+}
+
+html[data-theme="dark"] .text-gray-500 {
+  color: var(--color-dark-text-muted) !important;
+}
+
+html[data-theme="dark"] .text-gray-600 {
+  color: var(--color-dark-text-muted) !important;
+}
+
+/* Accent colors */
+.text-blue-400,
+a.text-blue-400 {
+  color: var(--color-accent) !important;
+}
+
+html[data-theme="dark"] .text-blue-400 {
+  color: #bd93f9 !important; /* Dracula purple */
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+html[data-theme="dark"] a {
+  color: #bd93f9;
+}
+
+html[data-theme="dark"] a:hover {
+  color: #ff79c6;
+}
+
+/* Hover states */
+.hover\:bg-gray-100:hover,
+.hover\:bg-gray-200:hover {
+  background-color: var(--color-border) !important;
+}
+
+html[data-theme="dark"] .hover\:bg-slate-600:hover,
+html[data-theme="dark"] .hover\:bg-slate-700:hover {
+  background-color: #6272a4 !important;
+}
+
+/* Navigation header */
+header.bg-white {
+  border-bottom: 1px solid var(--color-border);
+}
+
+html[data-theme="dark"] header.bg-white {
+  border-bottom: 1px solid var(--color-dark-border);
+}
+
+/* Smooth transitions for everything */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }

@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+import { getCollection } from 'astro:content';
+
+// Get all years from content collection
+const allYears = await getCollection('years');
+
+// Sort by year (most recent first)
+const years = allYears.sort((a, b) => {
+  // Sort by the year field, assuming format like "2023-2024"
+  return b.data.year.localeCompare(a.data.year);
+});
+---
+
+<Layout title="School Years | Aarya Patel">
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+
+    <!-- Page Header -->
+    <section class="text-center py-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">🎓 School Years</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">My academic journey year by year</p>
+      <p class="text-sm text-gray-500 mt-2">Found {years.length} year{years.length !== 1 ? 's' : ''}</p>
+    </section>
+
+    <!-- Years Grid -->
+    <div class="grid gap-6 md:grid-cols-2">
+      {years.map(year => (
+        <a href={`/years/${year.id.replace('years/', '')}`} class="block group">
+          <Card title={year.data.grade} emoji="📖">
+            <p class="text-gray-600 dark:text-gray-400 mb-2">{year.data.year}</p>
+            <p class="text-gray-700 dark:text-gray-300 line-clamp-2">{year.data.tagline}</p>
+            <p class="text-blue-400 group-hover:underline mt-3">Read more →</p>
+          </Card>
+        </a>
+      ))}
+    </div>
+
+    <!-- Template Card -->
+    <Card title="Add a New Year!" emoji="✍️">
+      <p class="mb-4 text-gray-700 dark:text-gray-300">
+        To add a new school year, create a markdown file in <code class="bg-gray-200 dark:bg-slate-700 px-2 py-1 rounded">src/content/years/</code>
+      </p>
+      <p class="text-sm text-gray-500">
+        Use <code class="bg-gray-200 dark:bg-slate-700 px-2 py-1 rounded">grade-4.md</code> as a template.
+      </p>
+    </Card>
+
+    <!-- Back to Home -->
+    <div class="text-center pt-4">
+      <a href="/" class="text-blue-400 hover:underline">← Back to Home</a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

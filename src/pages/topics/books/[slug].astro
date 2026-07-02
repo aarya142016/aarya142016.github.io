@@ -1,0 +1,41 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import BookReview from '../../../components/BookReview.astro';
+import { getCollection } from 'astro:content';
+
+// Generate all possible book routes
+export async function getStaticPaths() {
+  const allBooks = await getCollection('book-reviews');
+  return allBooks.map(entry => ({
+    params: { slug: entry.id.replace('book-reviews/', '') },
+    props: { entry }
+  }));
+}
+
+// Get the current book entry from props
+const { entry } = Astro.props;
+const { data } = entry;
+---
+
+<Layout title={`${data.title} | Book Review | Aarya Patel`}>
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+
+    <!-- Back to Books List -->
+    <div class="mb-4">
+      <a href="/topics/books" class="text-blue-400 hover:underline">← Back to all books</a>
+    </div>
+
+    <!-- Book Review -->
+    <BookReview
+      title={data.title}
+      author={data.author}
+      yearRead={data.yearRead}
+      rating={data.rating}
+      summary={data.summary}
+      learned={data.learned}
+      favoritePart={data.favoritePart}
+      recommend={data.recommend}
+    />
+
+  </div>
+</Layout>

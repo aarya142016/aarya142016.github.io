@@ -2,38 +2,26 @@
 import Layout from '../../layouts/Layout.astro';
 import Card from '../../components/Card.astro';
 import BookReview from '../../components/BookReview.astro';
+import { getCollection } from 'astro:content';
 
-// Sample book review data - this will eventually come from Markdown files
-const books = [
-  {
-    title: "Basic English Grammar for Dummies",
-    author: "Willies Publication",
-    yearRead: 2024,
-    rating: 5,
-    summary: "My first textbook! This book taught me the fundamentals of English grammar in a way that was easy to understand.",
-    learned: [
-      "Parts of speech (nouns, verbs, adjectives, etc.)",
-      "Sentence structure and punctuation",
-      "How to write clearly and correctly"
-    ],
-    favoritePart: "The chapter on punctuation helped me understand when to use commas, periods, and other marks.",
-    recommend: "Yes! This is a great book for anyone starting to learn English grammar."
-  },
-  {
-    title: "Creative Problem Solving in School Mathematics",
-    author: "George Lencher",
-    yearRead: 2024,
-    rating: 5,
-    summary: "A fantastic book that taught me how to approach math problems creatively and think outside the box.",
-    learned: [
-      "Problem-solving strategies for math",
-      "How to break down complex problems",
-      "Creative thinking in mathematics"
-    ],
-    favoritePart: "The puzzles were challenging but fun! I especially liked the logic problems.",
-    recommend: "Yes! Perfect for students who want to improve their problem-solving skills."
-  }
-];
+// Get all book reviews from content collection
+const allBooks = await getCollection('book-reviews');
+
+// Sort by year read (newest first) and then by title
+const books = allBooks
+  .map(entry => ({
+    ...entry.data,
+    // Remove 'book-reviews/' prefix from the ID for cleaner URLs
+    slug: (entry.id || entry.slug).replace(/^book-reviews\//, '')
+  }))
+  .sort((a, b) => {
+    if (b.yearRead !== a.yearRead) {
+      return b.yearRead - a.yearRead;
+    }
+    return a.title.localeCompare(b.title);
+  });
+
+console.log('books:', books);
 ---
 
 <Layout title="Books | Aarya Patel">
@@ -43,21 +31,22 @@ const books = [
     <section class="text-center py-8">
       <h1 class="text-4xl md:text-5xl font-bold mb-4">📚 Books I've Read</h1>
       <p class="text-xl text-gray-600 dark:text-gray-400">My reading journey and book reviews</p>
+      <p class="text-sm text-gray-500">Found {books.length} books</p>
     </section>
 
     <!-- Book Reviews Grid -->
-    <div class="space-y-6">
+    <div class="grid gap-4 md:grid-cols-2">
       {books.map(book => (
-        <BookReview
-          title={book.title}
-          author={book.author}
-          yearRead={book.yearRead}
-          rating={book.rating}
-          summary={book.summary}
-          learned={book.learned}
-          favoritePart={book.favoritePart}
-          recommend={book.recommend}
-        />
+        <a href={`/topics/books/${book.slug}`} class="block group">
+          <Card title={book.title} emoji="📖">
+            <p class="text-gray-600 dark:text-gray-400">by {book.author}</p>
+            <div class="flex items-center gap-4 mt-2 text-sm text-gray-500">
+              <span>Read: {book.yearRead}</span>
+              <span class="text-yellow-400">{'★'.repeat(book.rating)}{'☆'.repeat(5 - book.rating)}</span>
+            </div>
+            <p class="text-blue-400 group-hover:underline mt-2">Click to read review →</p>
+          </Card>
+        </a>
       ))}
     </div>
 
@@ -66,8 +55,11 @@ const books = [
       <p class="mb-4">
         Want to add a book review? Use the template in the <code class="bg-gray-200 dark:bg-slate-700 px-2 py-1 rounded">templates/</code> folder!
       </p>
-      <p class="text-gray-600 dark:text-gray-400 text-sm">
-        Just copy the template, fill in your thoughts, and we'll add it to the site.
+      <p class="mb-4 text-gray-600 dark:text-gray-400 text-sm">
+        Just copy the template, fill in your thoughts, and save it to <code class="bg-gray-200 dark:bg-slate-700 px-2 py-1 rounded">src/content/book-reviews/</code>
+      </p>
+      <p class="text-sm text-gray-500 dark:text-gray-500">
+        <strong>Required fields:</strong> title, author, yearRead, rating, summary, learned, favoritePart, recommend
       </p>
     </Card>
 

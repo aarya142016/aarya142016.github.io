@@ -1,0 +1,102 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+import { getCollection, render } from 'astro:content';
+
+// Generate all possible year routes
+export async function getStaticPaths() {
+  const years = await getCollection('years');
+  return years.map(entry => ({
+    params: { slug: entry.id.replace('years/', '') },
+    props: { entry }
+  }));
+}
+
+// Get the current year entry from props
+const { entry } = Astro.props;
+const { data } = entry;
+
+// Get the rendered content using render() from astro:content
+const { Content } = await render(entry);
+---
+
+<Layout title={`${data.title} | ${data.grade} | Aarya Patel`}>
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+
+    <!-- Page Header -->
+    <section class="text-center py-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">📖 {data.title}</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">{data.tagline}</p>
+      <p class="text-sm text-gray-500 mt-2">{data.year}</p>
+    </section>
+
+    <!-- Year Content -->
+    <Card title="" emoji="">
+      <div class="prose prose-slate dark:prose-invert max-w-none">
+        <Content />
+      </div>
+    </Card>
+
+    <!-- Quick Links to Topics -->
+    <Card title="Explore More" emoji="🔗">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <a href="/topics/coding" class="text-blue-400 hover:underline">💻 Coding</a>
+        <a href="/topics/books" class="text-blue-400 hover:underline">📚 Books</a>
+        <a href="/topics/math" class="text-blue-400 hover:underline">🧮 Math</a>
+        <a href="/topics/music" class="text-blue-400 hover:underline">🎹 Music</a>
+        <a href="/topics/art" class="text-blue-400 hover:underline">🎨 Art</a>
+      </div>
+    </Card>
+
+    <!-- Back to All Years -->
+    <div class="text-center pt-4">
+      <a href="/years" class="text-blue-400 hover:underline">← All Years</a>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  /* Add prose styling for markdown content */
+  :global(.prose h2) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  :global(.prose h3) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  :global(.prose p) {
+    margin-bottom: 1rem;
+    color: rgb(55 65 81);
+  }
+  :global(html.dark .prose p) {
+    color: rgb(209 213 219);
+  }
+  :global(.prose ul) {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    color: rgb(55 65 81);
+  }
+  :global(html.dark .prose ul) {
+    color: rgb(209 213 219);
+  }
+  :global(.prose ul li) {
+    margin-top: 0.5rem;
+  }
+  :global(.prose strong) {
+    font-weight: 600;
+  }
+  :global(.prose em) {
+    font-style: italic;
+    color: rgb(75 85 99);
+  }
+  :global(html.dark .prose em) {
+    color: rgb(156 163 175);
+  }
+</style>
