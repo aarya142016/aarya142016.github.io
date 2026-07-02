@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+---
+
+<Layout title="Coding Journey | Aarya Patel">
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+
+    <!-- Page Header -->
+    <section class="text-center py-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">💻 Coding Journey</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">My adventure in programming and problem-solving</p>
+    </section>
+
+    <!-- Python Mastery -->
+    <Card title="Python Programming" emoji="🐍">
+      <p class="mb-4">I've mastered the fundamentals of Python programming, including:</p>
+      <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300 mb-4">
+        <li><strong>Data Types:</strong> Numbers, strings, lists, sets, and dictionaries</li>
+        <li><strong>Conditionals:</strong> If/else statements for decision making</li>
+        <li><strong>Loops:</strong> For loops and while loops for repetition</li>
+        <li><strong>Functions:</strong> Creating reusable code blocks</li>
+      </ul>
+      <p class="text-gray-700 dark:text-gray-300">
+        I've built several projects to practice these concepts, including my Snake Game!
+      </p>
+    </Card>
+
+    <!-- LeetCode Progress -->
+    <Card title="LeetCode Practice" emoji="🧠">
+      <p class="mb-4">I practice problem-solving on LeetCode regularly. It helps me think logically and learn new algorithms.</p>
+      <div class="bg-gray-100 dark:bg-slate-700 rounded-lg p-6 text-center">
+        <p class="text-5xl font-bold text-blue-400 mb-2">140+</p>
+        <p class="text-gray-600 dark:text-gray-400">Problems Solved</p>
+      </div>
+      <p class="mt-4">
+        <a
+          href="https://leetcode.com/u/aarya142016/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
+        >
+          View My LeetCode Profile →
+        </a>
+      </p>
+    </Card>
+
+    <!-- Snake Game -->
+    <Card title="My Snake Game" emoji="🎮">
+      <p class="mb-4">One of my first big projects was building a classic Snake game using Python and Pygame!</p>
+      <div class="bg-gray-100 dark:bg-slate-700 rounded-lg p-4 mb-4">
+        <h3 class="font-bold mb-2">How I Built It:</h3>
+        <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
+          <li>Used Pygame for graphics and game loop</li>
+          <li>Implemented snake movement with keyboard controls</li>
+          <li>Added food spawning and score tracking</li>
+          <li>Handled collision detection (walls and self)</li>
+          <li>Added game over screen with restart option</li>
+        </ul>
+      </div>
+      <p class="mb-4">The game runs right in the browser using PyScript!</p>
+      <a
+        href="/snake/snake.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition-colors"
+      >
+        Play Snake Game →
+      </a>
+    </Card>
+
+    <!-- Future Goals -->
+    <Card title="What's Next?" emoji="🚀">
+      <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+        <li>Learn more advanced algorithms and data structures</li>
+        <li>Build more games and interactive projects</li>
+        <li>Explore web development beyond static sites</li>
+        <li>Continue solving LeetCode problems to improve my problem-solving skills</li>
+      </ul>
+    </Card>
+
+    <!-- Back to Home -->
+    <div class="text-center pt-4">
+      <a href="/" class="text-blue-400 hover:underline">← Back to Home</a>
+    </div>
+
+  </div>
+</Layout>

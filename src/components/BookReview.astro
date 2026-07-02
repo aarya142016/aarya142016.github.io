@@ -1,0 +1,71 @@
+---
+/**
+ * BookReview component for displaying book reviews
+ * @prop {string} title - Book title
+ * @prop {string} author - Book author
+ * @prop {number} yearRead - Year the book was read
+ * @prop {number} rating - Rating from 1-5
+ * @prop {string} summary - Book summary
+ * @prop {string} learned - What was learned (array or string)
+ * @prop {string} favoritePart - Favorite part of the book
+ * @prop {string} recommend - Recommendation
+ */
+
+interface Props {
+  title: string;
+  author: string;
+  yearRead: number;
+  rating: number;
+  summary: string;
+  learned: string[] | string;
+  favoritePart: string;
+  recommend: string;
+}
+
+const { title, author, yearRead, rating, summary, learned, favoritePart, recommend } = Astro.props;
+
+// Handle learned as either array or string
+const learnedList = Array.isArray(learned) ? learned : [learned];
+
+// Generate star rating
+const stars = '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
+---
+
+<article class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+  <!-- Book Header -->
+  <div class="flex items-start justify-between mb-4">
+    <div>
+      <h3 class="text-xl font-bold text-blue-400">{title}</h3>
+      <p class="text-gray-600 dark:text-gray-400">by {author}</p>
+    </div>
+    <div class="text-right">
+      <p class="text-yellow-400 text-lg">{stars}</p>
+      <p class="text-sm text-gray-500">Read in {yearRead}</p>
+    </div>
+  </div>
+
+  <!-- Book Content -->
+  <div class="space-y-4">
+    <div>
+      <h4 class="font-semibold text-lg mb-2">Summary</h4>
+      <p class="text-gray-700 dark:text-gray-300">{summary}</p>
+    </div>
+
+    <div>
+      <h4 class="font-semibold text-lg mb-2">What I Learned</h4>
+      <ul class="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
+        {learnedList.map(item => <li>{item}</li>)}
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-semibold text-lg mb-2">My Favorite Part</h4>
+      <p class="text-gray-700 dark:text-gray-300">{favoritePart}</p>
+    </div>
+
+    <div>
+      <h4 class="font-semibold text-lg mb-2">Would I Recommend?</h4>
+      <p class="text-gray-700 dark:text-gray-300">{recommend}</p>
+    </div>
+  </div>
+</article>

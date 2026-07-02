@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+---
+
+<Layout title="Aarya Patel | Home">
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+
+    <!-- Hero Section -->
+    <section class="text-center py-12">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Aarya Patel</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">Student • Coder • Problem Solver</p>
+    </section>
+
+    <!-- About Me -->
+    <Card title="About Me" emoji="👋">
+      <p class="text-gray-700 dark:text-gray-300">
+        Hi! I'm Aarya. I like coding, solving problems on LeetCode, and building fun projects like games.
+        I also love playing the piano and enjoy maths a lot.
+        Welcome to my portfolio where I share my learning journey!
+      </p>
+    </Card>
+
+    <!-- Quick Links by Topic -->
+    <Card title="Explore by Topic" emoji="📂">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <a href="/topics/coding" class="block p-4 bg-gray-100 dark:bg-slate-700 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+          <span class="text-2xl">💻</span>
+          <h3 class="font-bold mt-2">Coding</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Python, LeetCode, Games</p>
+        </a>
+
+        <a href="/topics/books" class="block p-4 bg-gray-100 dark:bg-slate-700 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+          <span class="text-2xl">📚</span>
+          <h3 class="font-bold mt-2">Books</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Reviews & Reflections</p>
+        </a>
+
+        <a href="/topics/math" class="block p-4 bg-gray-100 dark:bg-slate-700 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+          <span class="text-2xl">🧮</span>
+          <h3 class="font-bold mt-2">Math</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Competitions & Problem Solving</p>
+        </a>
+
+        <a href="/topics/music" class="block p-4 bg-gray-100 dark:bg-slate-700 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+          <span class="text-2xl">🎹</span>
+          <h3 class="font-bold mt-2">Music</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Piano Journey</p>
+        </a>
+
+        <a href="/topics/art" class="block p-4 bg-gray-100 dark:bg-slate-700 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+          <span class="text-2xl">🎨</span>
+          <h3 class="font-bold mt-2">Art</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Creative Projects</p>
+        </a>
+
+        <a href="/years/grade-4" class="block p-4 bg-gray-100 dark:bg-slate-700 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors">
+          <span class="text-2xl">📖</span>
+          <h3 class="font-bold mt-2">Grade 4 Summary</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">My Year in Review</p>
+        </a>
+      </div>
+    </Card>
+
+    <!-- Snake Game Link -->
+    <Card title="Play My Snake Game" emoji="🐍">
+      <p class="mb-4">I built a classic Snake game using Python and Pygame! You can play it right here in your browser.</p>
+      <a
+        href="/snake/snake.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-colors"
+      >
+        Play Snake Game →
+      </a>
+    </Card>
+
+    <!-- External Links -->
+    <Card title="Links" emoji="🔗">
+      <ul class="space-y-2">
+        <li>
+          <strong>GitHub:</strong>
+          <a href="https://github.com/aarya142016/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline ml-2">
+            github.com/aarya142016
+          </a>
+        </li>
+        <li>
+          <strong>LeetCode:</strong>
+          <a href="https://leetcode.com/u/aarya142016/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline ml-2">
+            140+ Problems Solved
+          </a>
+        </li>
+      </ul>
+    </Card>
+
+  </div>
+</Layout>

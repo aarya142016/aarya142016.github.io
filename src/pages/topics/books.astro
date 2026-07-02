@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+import BookReview from '../../components/BookReview.astro';
+
+// Sample book review data - this will eventually come from Markdown files
+const books = [
+  {
+    title: "Basic English Grammar for Dummies",
+    author: "Willies Publication",
+    yearRead: 2024,
+    rating: 5,
+    summary: "My first textbook! This book taught me the fundamentals of English grammar in a way that was easy to understand.",
+    learned: [
+      "Parts of speech (nouns, verbs, adjectives, etc.)",
+      "Sentence structure and punctuation",
+      "How to write clearly and correctly"
+    ],
+    favoritePart: "The chapter on punctuation helped me understand when to use commas, periods, and other marks.",
+    recommend: "Yes! This is a great book for anyone starting to learn English grammar."
+  },
+  {
+    title: "Creative Problem Solving in School Mathematics",
+    author: "George Lencher",
+    yearRead: 2024,
+    rating: 5,
+    summary: "A fantastic book that taught me how to approach math problems creatively and think outside the box.",
+    learned: [
+      "Problem-solving strategies for math",
+      "How to break down complex problems",
+      "Creative thinking in mathematics"
+    ],
+    favoritePart: "The puzzles were challenging but fun! I especially liked the logic problems.",
+    recommend: "Yes! Perfect for students who want to improve their problem-solving skills."
+  }
+];
+---
+
+<Layout title="Books | Aarya Patel">
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+
+    <!-- Page Header -->
+    <section class="text-center py-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">📚 Books I've Read</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">My reading journey and book reviews</p>
+    </section>
+
+    <!-- Book Reviews Grid -->
+    <div class="space-y-6">
+      {books.map(book => (
+        <BookReview
+          title={book.title}
+          author={book.author}
+          yearRead={book.yearRead}
+          rating={book.rating}
+          summary={book.summary}
+          learned={book.learned}
+          favoritePart={book.favoritePart}
+          recommend={book.recommend}
+        />
+      ))}
+    </div>
+
+    <!-- Template Card -->
+    <Card title="Write Your Own Review!" emoji="✍️">
+      <p class="mb-4">
+        Want to add a book review? Use the template in the <code class="bg-gray-200 dark:bg-slate-700 px-2 py-1 rounded">templates/</code> folder!
+      </p>
+      <p class="text-gray-600 dark:text-gray-400 text-sm">
+        Just copy the template, fill in your thoughts, and we'll add it to the site.
+      </p>
+    </Card>
+
+    <!-- Back to Home -->
+    <div class="text-center pt-4">
+      <a href="/" class="text-blue-400 hover:underline">← Back to Home</a>
+    </div>
+
+  </div>
+</Layout>

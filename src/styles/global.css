@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* Custom theme colors matching the original site */
+@theme {
+  --color-slate-900: #0f172a;  /* Main dark background */
+  --color-slate-800: #1e293b;  /* Cards/headers */
+  --color-blue-400: #60a5fa;   /* Links */
+  --color-gray-400: #9ca3af;   /* Footer text */
+}
+
+/* Dark mode class support */
+html {
+  color-scheme: dark;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+/* Base styles */
+body {
+  @apply bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200;
+  min-height: 100vh;
+}

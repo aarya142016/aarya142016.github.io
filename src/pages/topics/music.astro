@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+---
+
+<Layout title="Music & Piano | Aarya Patel">
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+
+    <!-- Page Header -->
+    <section class="text-center py-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">🎹 Music & Piano</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">My musical journey</p>
+    </section>
+
+    <!-- Piano Journey -->
+    <Card title="My Piano Journey" emoji="🎹">
+      <p class="mb-4">I love playing the piano! Music is one of my favorite hobbies alongside coding and math.</p>
+      <p class="text-gray-700 dark:text-gray-300">
+        Playing piano helps me relax and express myself creatively. It also teaches me discipline and patience -
+        just like coding, you have to practice regularly to get better!
+      </p>
+    </Card>
+
+    <!-- Coming Soon -->
+    <Card title="More Coming Soon!" emoji="🎵">
+      <p class="text-gray-700 dark:text-gray-300">
+        I'm still building this section! Check back later for updates about my musical progress,
+        favorite pieces, and more.
+      </p>
+    </Card>
+
+    <!-- Connection to Coding -->
+    <Card title="Music & Coding" emoji="🔗">
+      <p class="mb-4">Did you know music and coding have a lot in common?</p>
+      <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+        <li>Both require pattern recognition and logical thinking</li>
+        <li>Music has algorithms (scales, chord progressions)</li>
+        <li>Coding can create music (digital audio, music software)</li>
+        <li>Both need regular practice to master</li>
+      </ul>
+    </Card>
+
+    <!-- Back to Home -->
+    <div class="text-center pt-4">
+      <a href="/" class="text-blue-400 hover:underline">← Back to Home</a>
+    </div>
+
+  </div>
+</Layout>

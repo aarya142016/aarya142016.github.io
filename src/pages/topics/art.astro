@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../components/Card.astro';
+---
+
+<Layout title="Art & Creativity | Aarya Patel">
+  <div class="max-w-4xl mx-auto px-4 py-12 space-y-6">
+
+    <!-- Page Header -->
+    <section class="text-center py-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">🎨 Art & Creativity</h1>
+      <p class="text-xl text-gray-600 dark:text-gray-400">My creative projects and artwork</p>
+    </section>
+
+    <!-- Coming Soon -->
+    <Card title="Coming Soon!" emoji="🖌️">
+      <p class="text-gray-700 dark:text-gray-300 mb-4">
+        I'm still working on this section! Art is one of my interests, and I'll be sharing my projects here soon.
+      </p>
+      <p class="text-gray-600 dark:text-gray-400 text-sm">
+        Check back later for drawings, paintings, and other creative work!
+      </p>
+    </Card>
+
+    <!-- Creativity in Everything -->
+    <Card title="Creativity Everywhere" emoji="✨">
+      <p class="mb-4">Creativity isn't just about art - it's in everything I do!</p>
+      <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+        <li><strong>Coding:</strong> Creating games and programs is creative problem-solving</li>
+        <li><strong>Math:</strong> Finding elegant solutions to problems is an art</li>
+        <li><strong>Music:</strong> Playing piano is self-expression through sound</li>
+        <li><strong>Writing:</strong> Book reviews and reflections help me express my thoughts</li>
+      </ul>
+    </Card>
+
+    <!-- Back to Home -->
+    <div class="text-center pt-4">
+      <a href="/" class="text-blue-400 hover:underline">← Back to Home</a>
+    </div>
+
+  </div>
+</Layout>
