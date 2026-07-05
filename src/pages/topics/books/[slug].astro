@@ -1,19 +1,23 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import BookReview from '../../../components/BookReview.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 // Generate all possible book routes
 export async function getStaticPaths() {
-  const allBooks = await getCollection('book-reviews');
-  return allBooks.map(entry => ({
-    params: { slug: entry.id.replace('book-reviews/', '') },
-    props: { entry }
-  }));
+  const books = await getCollection('book-reviews');
+  return books.map((entry) => {
+    // Remove 'book-reviews/' prefix from entry.id
+    const slug = entry.id.replace(/^book-reviews\//, '');
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
 }
 
-// Get the current book entry from props
 const { entry } = Astro.props;
+const { Content } = await render(entry);
 const { data } = entry;
 ---
 
@@ -35,7 +39,12 @@ const { data } = entry;
       learned={data.learned}
       favoritePart={data.favoritePart}
       recommend={data.recommend}
-    />
+    >
+      <div class="markdown-content">
+        <h3>Full Review</h3>
+        <Content />
+      </div>
+    </BookReview>
 
   </div>
 </Layout>

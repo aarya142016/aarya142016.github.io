@@ -17,13 +17,13 @@ const { title, emoji = '', content = '' } = Astro.props;
 
 <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
   {emoji && (
-    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-gray-800 dark:text-gray-100">
       <span>{emoji}</span>
       <span>{title}</span>
     </h2>
   )}
   {!emoji && (
-    <h2 class="text-2xl font-bold mb-4">{title}</h2>
+    <h2 class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100">{title}</h2>
   )}
 
   <div class="prose dark:prose-invert max-w-none">

@@ -20,9 +20,13 @@ const { title, description = "Aarya Patel's portfolio website showcasing coding,
     <!-- Initialize theme immediately to prevent flash -->
     <script is:inline>
       const savedTheme = localStorage.getItem('theme');
-      const theme = savedTheme || 'dark';
-      if (!savedTheme) localStorage.setItem('theme', 'dark');
+      const theme = savedTheme || 'light';
+      if (!savedTheme) localStorage.setItem('theme', 'light');
       document.documentElement.setAttribute('data-theme', theme);
+      // Also add 'dark' class for Tailwind's dark mode utilities
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
     </script>
   </head>
   <body class="bg-gray-100 dark:bg-slate-900 text-gray-800 dark:text-gray-200">

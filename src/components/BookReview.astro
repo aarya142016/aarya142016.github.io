@@ -9,6 +9,7 @@
  * @prop {string} learned - What was learned (array or string)
  * @prop {string} favoritePart - Favorite part of the book
  * @prop {string} recommend - Recommendation
+ * @prop {string} body - Full review content (HTML)
  */
 
 interface Props {
@@ -67,5 +68,7 @@ const stars = '⭐'.repeat(rating) + '☆'.repeat(5 - rating);
       <h4 class="font-semibold text-lg mb-2">Would I Recommend?</h4>
       <p class="text-gray-700 dark:text-gray-300">{recommend}</p>
     </div>
+
+    <slot />
   </div>
 </article>
